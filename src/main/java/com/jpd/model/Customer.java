@@ -52,6 +52,8 @@ private int numberRequest;
 @OneToOne(mappedBy = "customer")
 @JsonManagedReference
 private RequestSpeaking requestSpeaking;
-
+@OneToOne(mappedBy = "customer")
+@JsonManagedReference
+private Creator creator;
 
 }

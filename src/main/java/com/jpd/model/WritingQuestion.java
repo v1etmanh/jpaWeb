@@ -14,19 +14,24 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
 @RequiredArgsConstructor
-public class ListionChoiceOptions {
+@AllArgsConstructor
+@Data
+public class WritingQuestion {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "options_id")
-	private long optionId;
-	@ManyToOne
-	@JoinColumn(name="lcq_id")
-	@JsonBackReference
-	private ListionChoiceQuestion listionChoiceQuestion;
-   
-	private String optionText;
-	private boolean isCorrect;
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "writing_id")
+private long writingId;
+@ManyToOne
+@JoinColumn(name = "module_id")
+@JsonBackReference
+private Module module;
+private String question;
+@Column(name = "url_image")
+private String urlImage;
+@Column(name = "user_answer")
+private String userAnswer;
+private String feedback;
+private double mark;
+
 }

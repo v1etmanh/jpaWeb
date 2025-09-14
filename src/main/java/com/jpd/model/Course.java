@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -13,6 +14,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +31,32 @@ public class Course {
 @Column(name = "course_id")
 private long courseId;
 @NotNull
+
 private String name;
 @OneToMany(mappedBy = "course",cascade =CascadeType.ALL )
 @JsonIgnore
 private List<Enrollment>enrolls;
-@OneToMany(mappedBy = "courseM",cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
 @JsonManagedReference
-private List<Module>module;
+
+private List<ModuleType>moduleType;
+@Column(name = "url_img")
 private String urlImg;
+@ManyToOne()
+@JoinColumn(name = "creator_id")
+@JsonBackReference
+private Creator creator;
+private String description;
+@Column(name = "target_audience")
+private String targetAudience;
+private String requirement;
+@Column(name="learning_object")
+private String learningObject;
+private TypeLanguage Language;
+private double price;
+private double revenue;
+
+private int numberOfStudent;
+
+private boolean ispublic;
 }

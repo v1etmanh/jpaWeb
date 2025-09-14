@@ -35,6 +35,7 @@ public class Passage {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "passage_id")
 private long passageId;
+private String title;
 private String content;
 @ManyToOne
 @JoinColumn(name = "module_id")

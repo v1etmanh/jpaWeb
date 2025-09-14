@@ -16,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,4 +43,7 @@ private Course course;
 @JsonIgnore
 private List<CustomerFinishedModule>customerFinishedModules;
 private double progress;
+@OneToOne(mappedBy = "enrollment")
+private FeedBack feedBack;
 }
+

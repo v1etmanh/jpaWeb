@@ -1,5 +1,6 @@
 package com.jpd.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.jpd.model.Course;
 import com.jpd.model.Customer;
 import com.jpd.model.CustomerFinishedModule;
 import com.jpd.model.Enrollment;
+import com.jpd.model.ModuleType;
 import com.jpd.repository.CourseRepository;
 import com.jpd.repository.CustomerFinishedModuleRepository;
 import com.jpd.repository.EnrollingRepository;
@@ -37,7 +39,12 @@ public void saveProcess(long enrollId, long moduleId) {
 	x.setEnrolling(enro);
 	x.setModule(module);
 	this.fRe.save(x);
-     long length=module.getCourseM().getModule().size();
+	List<ModuleType>mds=enro.getCourse().getModuleType();
+	
+     long length=0;
+     for(ModuleType m:mds) {
+    	 length+=m.getModule().size();
+     }
      double oldPro=(enro.getProgress())+1/(double)length;
      enro.setProgress(oldPro);
      this.enRe.save(enro);

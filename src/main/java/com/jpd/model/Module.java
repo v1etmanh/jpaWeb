@@ -38,10 +38,7 @@ public class Module {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
-@ManyToOne
-@JoinColumn(name = "course_id")
-@JsonBackReference
-private Course courseM;
+
 @ManyToOne
 @JoinColumn(name = "moduletype_id")
 @JsonBackReference
@@ -75,4 +72,10 @@ private List<CustomerFinishedModule>customerFinishedModules;
 @OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
 @JsonManagedReference
 private List<PdfDocument>pdfs;
+@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
+@JsonManagedReference
+private List<WritingQuestion>writingQuestions;
+@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
+@JsonManagedReference
+private List<TeachingVideo>teachingVideos;
 }

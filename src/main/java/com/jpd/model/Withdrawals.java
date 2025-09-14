@@ -1,5 +1,7 @@
 package com.jpd.model;
 
+import java.sql.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -14,19 +16,20 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
 @RequiredArgsConstructor
-public class ListionChoiceOptions {
+@AllArgsConstructor
+@Data
+public class Withdrawals {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "options_id")
-	private long optionId;
+	@Column(name = "widthdrawals_id")
+	private long widthdrawalsId;
 	@ManyToOne
-	@JoinColumn(name="lcq_id")
+	@JoinColumn(name = "creator_id")
 	@JsonBackReference
-	private ListionChoiceQuestion listionChoiceQuestion;
-   
-	private String optionText;
-	private boolean isCorrect;
+	private Creator creator;
+	private double amount;
+	@Column(name = "create_date")
+	private Date createDate;
+	private String content;
 }
