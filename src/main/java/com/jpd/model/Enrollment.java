@@ -43,7 +43,7 @@ private Course course;
 @JsonIgnore
 private List<CustomerFinishedModule>customerFinishedModules;
 private double progress;
-@OneToOne(mappedBy = "enrollment")
+@OneToOne(mappedBy = "enrollment",cascade = CascadeType.ALL)
 private FeedBack feedBack;
 }
 

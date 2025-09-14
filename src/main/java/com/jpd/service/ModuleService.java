@@ -1,7 +1,10 @@
 package com.jpd.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,7 @@ import com.jpd.model.Course;
 import com.jpd.model.CustomerFinishedModule;
 import com.jpd.model.Enrollment;
 import com.jpd.model.Module;
+import com.jpd.model.ModuleType;
 import com.jpd.model.PdfDocument;
 import com.jpd.model.ReModule;
 import com.jpd.repository.CourseRepository;
@@ -28,7 +32,12 @@ CustomerFinishedModuleRepository fRe;
 public List<Module> retrieveAllModuleByCourse(long courseId) {
 	
 	Course course=this.courseRe.findByCourseId(courseId);
-	return this.moduleRepository.findByCourseM(course);
+	List<Module>md=new ArrayList<>();
+	for(ModuleType mds:course.getModuleType()) {
+		for(Module m:mds.getModule()) {
+			md.add(m);
+		}
+	} return md;
 }
 public Module retrieveModuleByid(long id){
 	return this.moduleRepository.findById(id);

@@ -59,4 +59,6 @@ private double revenue;
 private int numberOfStudent;
 
 private boolean ispublic;
+private boolean isban;
+private double capacity;
 }

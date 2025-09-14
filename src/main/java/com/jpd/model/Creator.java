@@ -28,7 +28,7 @@ public class Creator {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="creator_id")
 	private long creatorId;
-	@OneToMany(mappedBy ="course",cascade = CascadeType.ALL )
+	@OneToMany(mappedBy ="creator",cascade = CascadeType.ALL )
 	@JsonManagedReference
 	private List<Course>courses;
 	@OneToOne
@@ -44,7 +44,7 @@ public class Creator {
 	//validation
 	private String email;
 	//validation
-	@Column(name = "titleSelf")
+	@Column(name = "title_self")
 	private String titleSelf;
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -54,7 +54,9 @@ public class Creator {
 	private double maxCapacity;
 	private double balance;
 	@OneToMany(mappedBy = "creator",cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Withdrawals> withdrawals;
 	@OneToMany(mappedBy = "creator",cascade =CascadeType.ALL )
+	@JsonManagedReference
 	private List<UserSubscription>userSubscriptions;
 }

@@ -6,9 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.jpd.model.Course;
 import com.jpd.model.Module;
+import com.jpd.model.ModuleType;
 
 public interface ModuleRepository extends CrudRepository<Module, Long>{
-List<Module> findByCourseM(Course courseM);
+List<Module> findByModuleType(ModuleType moduleType);
 Module findById(long id);
-long countByCourseM(Course courseM);
+
 }
