@@ -43,7 +43,7 @@ private final	MyLearningService myLearningService;
 	        c.setCreateDate(new Date(System.currentTimeMillis()));
 	        c.setFamilyName(familyName);
 	        c.setGivenName(givenName);
-	        c.setLimitWord(0);
+	     
 	       Customer c1= myLearningService.SavenewCus(c);
 	       this.myLearningService.EnrollNewCustomer(c1);
 	        }

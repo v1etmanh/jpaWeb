@@ -47,7 +47,8 @@ private List<Enrollment>enrollments;
 @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 @JsonManagedReference
 private List<RememberWord>rememberWords;
-private int limitWord;
+@Column(name = "current_words")
+private int currentWords;
 private int numberRequest;
 @OneToOne(mappedBy = "customer")
 @JsonManagedReference
@@ -55,5 +56,8 @@ private RequestSpeaking requestSpeaking;
 @OneToOne(mappedBy = "customer")
 @JsonManagedReference
 private Creator creator;
-
+@Column(name="number_enrollment")
+private int numberEnrollment;
+@Column(name = "num")
+private int numberFinishCourse;
 }

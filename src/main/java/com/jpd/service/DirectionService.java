@@ -35,9 +35,9 @@ public class DirectionService {
     	return cus;
     }
     public boolean changeLimit(int delta, Customer customer) {
-        int newLimit = customer.getLimitWord() + delta;
+        int newLimit = customer.getCurrentWords() + delta;
         if (newLimit < 0 || newLimit > 20) return false;
-        customer.setLimitWord(newLimit);
+        customer.setCurrentWords(newLimit);
         cusRe.save(customer);
         return true;
     }

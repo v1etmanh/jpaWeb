@@ -1,5 +1,6 @@
 package com.jpd.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
@@ -71,6 +72,7 @@ private double capacity;
 private int totalRating;
 private int numberModuleType;
 private int numbeModule;
-
+@Column(name = "last_update")
+private Date lastUpdate;
 
 }
