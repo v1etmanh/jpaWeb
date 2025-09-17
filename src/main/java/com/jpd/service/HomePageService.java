@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.jpd.dto.CourseDTO;
 import com.jpd.model.Course;
-import com.jpd.model.CourseDTO;
 import com.jpd.repository.CourseRepository;
 
 import lombok.AllArgsConstructor;

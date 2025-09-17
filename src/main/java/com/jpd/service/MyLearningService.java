@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jpd.dto.CourseDTO;
 import com.jpd.model.Course;
-import com.jpd.model.CourseDTO;
 import com.jpd.model.Customer;
 import com.jpd.model.CustomerFinishedModule;
 import com.jpd.model.Enrollment;

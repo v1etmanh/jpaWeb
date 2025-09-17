@@ -42,14 +42,14 @@ public class Creator {
 	//validation
 	private String mobiNumber;
 	//validation
-	private String email;
+	
 	//validation
 	@Column(name = "title_self")
 	private String titleSelf;
 	@Column(name = "image_url")
 	private String imageUrl;
-	@Column(name="payment_method")
-	private PaymentMethod paymentMethod;
+	@Column(name="payment_email")
+	private String  paypalEmail;
 	private double currentCapacity;
 	private double maxCapacity;
 	private double balance;
@@ -59,4 +59,9 @@ public class Creator {
 	@OneToMany(mappedBy = "creator",cascade =CascadeType.ALL )
 	@JsonManagedReference
 	private List<UserSubscription>userSubscriptions;
+	@Column(name="number_courses")
+	private int numberCourses;
+	@Column(name = "total_student")
+	private int totalStudent;
+	
 }

@@ -3,8 +3,8 @@ package com.jpd.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jpd.dto.CourseDTO;
 import com.jpd.model.Course;
-import com.jpd.model.CourseDTO;
 import com.jpd.model.Customer;
 import com.jpd.service.HomePageService;
 

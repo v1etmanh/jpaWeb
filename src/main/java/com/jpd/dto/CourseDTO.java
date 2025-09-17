@@ -1,4 +1,4 @@
-package com.jpd.model;
+package com.jpd.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,15 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-/*
- * list<course> a =findAll()
- *for(int i=0;i<length;i++)
- *{
- *transform(course->courseDTO);
- *}
- * 
- * 
- * */
+
 public class CourseDTO {
 private long courseId;
 private String name;

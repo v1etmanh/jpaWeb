@@ -49,7 +49,7 @@ private Creator creator;
 private String description;
 @Column(name = "target_audience")
 private String targetAudience;
-private String requirement;
+
 @Column(name="learning_object")
 private String learningObject;
 private TypeLanguage Language;
@@ -57,8 +57,20 @@ private double price;
 private double revenue;
 
 private int numberOfStudent;
+@Column(name="teaching_language")
+private String teachingLanguage;
 
 private boolean ispublic;
+@Column(name="learning_outcomes")
+private List<String>learningOutcomes;
+
+private List<String> requirements;
 private boolean isban;
 private double capacity;
+@Column(name="total_rating")
+private int totalRating;
+private int numberModuleType;
+private int numbeModule;
+
+
 }
