@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,15 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-/*Module (
-    module_id INT PRIMARY KEY,
-    course_id INT,
-    module_type_id INT,
-    is_special BOOLEAN,
-    FOREIGN KEY (course_id) REFERENCES Course(course_id),
-    FOREIGN KEY (module_type_id) REFERENCES ModuleType(id)
-)
-*/
+
 
 @Entity
 @AllArgsConstructor
@@ -44,38 +37,17 @@ private long id;
 @JsonBackReference
 private ModuleType moduleType;
 private String titleOfModule;
-private boolean isSpecial;
-@OneToMany(mappedBy ="module" ,cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<FlashCard>flashCards;
-@OneToMany(mappedBy ="module",cascade = CascadeType.ALL )
-@JsonManagedReference
-private List<MultipleChoiceQuestion>mutipleChoiceQuestions;
+
+
+
+
+
+
+
+
+
 @OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
 @JsonManagedReference
-private List<GapfillQuestion>gapfillQuestions;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<ListionChoiceQuestion>listionChoiceQuestions;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<Passage>passages;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<SpeakingPictureQuestion>speakingPicturequestion;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<SpeakingPassageQuestion>speakingPassafeQuestion;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<CustomerFinishedModule>customerFinishedModules;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<PdfDocument>pdfs;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<WritingQuestion>writingQuestions;
-@OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
-@JsonManagedReference
-private List<TeachingVideo>teachingVideos;
+private List<ModuleContent>moduleContents;
+
 }

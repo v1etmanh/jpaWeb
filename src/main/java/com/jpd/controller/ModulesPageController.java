@@ -83,9 +83,9 @@ public ResponseEntity<?> getMethodName(@PathVariable("id")long id, @PathVariable
 	   {PdfDocument pdf=this.mdService.retrievePdfById(pdf_id);
 	    if(pdf!=null)
 	    {
-	    	Path path= Paths.get(pdf.getDoc());
+	    	Path path= Paths.get(pdf.getDocUrl());
 	    	 try {
-	    		 byte[] content = Files.readAllBytes(Paths.get(pdf.getDoc()));
+	    		 byte[] content = Files.readAllBytes(Paths.get(pdf.getDocUrl()));
 				  return ResponseEntity.ok()
 						.contentType(org.springframework.http.MediaType.APPLICATION_PDF)
 		                    .body(content);

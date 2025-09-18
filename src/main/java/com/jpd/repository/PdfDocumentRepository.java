@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface PdfDocumentRepository extends CrudRepository<PdfDocument, Long> {
-PdfDocument findByDocId(long docId);
+PdfDocument findById(long id);
 }

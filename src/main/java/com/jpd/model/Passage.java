@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,21 +27,15 @@ import lombok.RequiredArgsConstructor;
     FOREIGN KEY (module_id) REFERENCES Module(module_id)
 )
 */
-@Data
+
 @Entity
-@AllArgsConstructor
-@RequiredArgsConstructor
-public class Passage {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "passage_id")
-private long passageId;
+@DiscriminatorValue("PASSAGE")
+@Data
+public class Passage extends ModuleContent{
+
 private String title;
 private String content;
-@ManyToOne
-@JoinColumn(name = "module_id")
-@JsonBackReference
-private Module module;
+
 @OneToMany(mappedBy = "passage",cascade = CascadeType.ALL)
 @JsonManagedReference
 private List<ReadingQuestion>readingQuestions;

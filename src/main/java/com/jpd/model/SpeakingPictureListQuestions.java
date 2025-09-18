@@ -33,7 +33,7 @@ private String question;
 
 private String answer;
 @ManyToOne
-@JoinColumn(name = "spq_id")
+@JoinColumn(name = "id")
 @JsonBackReference
 private SpeakingPictureQuestion speakingPictureQuestion;
 }

@@ -3,6 +3,7 @@ package com.jpd.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,20 +25,14 @@ import lombok.RequiredArgsConstructor;
 )
 */
 @Entity
-@RequiredArgsConstructor
-@AllArgsConstructor
+@DiscriminatorValue("FLASHCARD")
 @Data
-public class FlashCard {
-	@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "flash_card_id")
-private long flashCardId;
-@ManyToOne
-@JoinColumn(name = "module_id")
-@JsonBackReference
-private Module module;
-private String word;
-private String meaning;
-
-
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class FlashCard extends ModuleContent {
+    private String word;
+    private String meaning;
+    @Column(name="img_url")
+    private String imgUrl;
 }
+

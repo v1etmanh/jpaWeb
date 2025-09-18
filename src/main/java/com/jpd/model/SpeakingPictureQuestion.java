@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,18 +26,12 @@ import lombok.RequiredArgsConstructor;
 )
 */
 @Entity
-@RequiredArgsConstructor
-@AllArgsConstructor
+@DiscriminatorValue("SPEAKING_PICTURE")
 @Data
-
-public class SpeakingPictureQuestion {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long spqId;
-	@ManyToOne
-	@JoinColumn(name = "module_id")
-	@JsonBackReference
-	private Module module;
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class SpeakingPictureQuestion extends ModuleContent {
+	
 	private String pictureUrl;
 	@OneToMany(mappedBy = "speakingPictureQuestion",cascade = CascadeType.ALL)
 	@JsonManagedReference

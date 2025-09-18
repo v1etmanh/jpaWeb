@@ -37,6 +37,9 @@ private String name;
 @OneToMany(mappedBy = "course",cascade =CascadeType.ALL )
 @JsonIgnore
 private List<Enrollment>enrolls;
+@OneToMany(mappedBy = "course",cascade =CascadeType.ALL )
+@JsonIgnore
+private List<CourseTracker>customer_course;
 @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
 @JsonManagedReference
 

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,10 +47,13 @@ private String role;
 private List<Enrollment>enrollments;
 @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 @JsonManagedReference
+private List<CourseTracker>customer_course ;
+@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+@JsonManagedReference
 private List<RememberWord>rememberWords;
 @Column(name = "current_words")
 private int currentWords;
-private int numberRequest;
+
 @OneToOne(mappedBy = "customer")
 @JsonManagedReference
 private RequestSpeaking requestSpeaking;
@@ -60,4 +64,8 @@ private Creator creator;
 private int numberEnrollment;
 @Column(name = "num")
 private int numberFinishCourse;
+@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+private List<Customer_ModuleType>Customer_ModuleTypes;
+@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+private List<Customer_Question>customer_Questions;
 }

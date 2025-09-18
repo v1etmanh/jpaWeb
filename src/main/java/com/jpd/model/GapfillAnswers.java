@@ -28,7 +28,7 @@ public class GapfillAnswers {
 	@Column(name = "answer_id")
 	private long answerId;
 	@ManyToOne
-	@JoinColumn(name="gfq_id")
+	@JoinColumn(name="id")
 	@JsonBackReference
 	private GapfillQuestion gapfillQuestion;
  

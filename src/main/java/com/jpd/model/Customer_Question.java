@@ -1,11 +1,9 @@
 package com.jpd.model;
 
-import java.sql.Date;
+import org.hibernate.internal.build.AllowNonPortable;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,17 +15,19 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@DiscriminatorValue("VIDEO")
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
-public class TeachingVideo extends ModuleContent {
+public class Customer_Question {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	private String url;
-	private double  capacity;
-	@Column(name = "title_video")
-	private String titleVideo;
-	private double duration;
-
-	
+private long cqId;
+	@ManyToOne
+	@JoinColumn(name = "id")
+	@JsonBackReference
+private ModuleContent moduleContent;
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 }

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,14 +37,17 @@ private long enrollId;
 @JsonBackReference
 private Customer customer;
 private Date createDate;
+
+@
+Column(name = "pay_amount")
+private double payAmount;
 @ManyToOne
 @JoinColumn(name = "course_id")  // Tạo khóa ngoại course_id trong bảng Enrollment
 private Course course;
-@OneToMany(mappedBy = "enrolling",cascade = CascadeType.ALL)
-@JsonIgnore
-private List<CustomerFinishedModule>customerFinishedModules;
-private double progress;
-@OneToOne(mappedBy = "enrollment",cascade = CascadeType.ALL)
+
+
+@OneToOne(mappedBy = "enrollment",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 private FeedBack feedBack;
+
 }
 

@@ -49,7 +49,7 @@ public void EnrollNewCustomer(Customer cus )
 Enrollment e=new Enrollment();
         e.setCourse(course);
         e.setCustomer(cus);
-       e.setProgress(0.0);
+      
        e.setCreateDate(new Date()); // Hoặc dùng LocalDateTime.now()
 	this.enrollRe.save(e);
 	  RequestSpeaking rq = new RequestSpeaking();

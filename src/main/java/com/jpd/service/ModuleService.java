@@ -43,14 +43,14 @@ public Module retrieveModuleByid(long id){
 	return this.moduleRepository.findById(id);
 }
 public List<ReModule> retrieveCourse(long courseId,Enrollment e) {
-	List<CustomerFinishedModule> cusF=this.fRe.findByEnrolling(e);
+	List<CustomerFinishedModule> cusF=this.fRe.findByCustomer(e.getCustomer());
     return retrieveAllModuleByCourse(courseId).stream()
             .map(module -> new ReModule(module.getId(), module.getModuleType().getModuleName(),cusF.stream().anyMatch(x -> x.getModule().getId() == module.getId())))
             
             .toList();
 }
 public PdfDocument retrievePdfById(long pdf_id) {
-	return this.pdfDocumentRepository.findByDocId(pdf_id);
+	return this.pdfDocumentRepository.findById(pdf_id);
 }
 
 }

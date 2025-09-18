@@ -23,9 +23,9 @@ public class ListionChoiceOptions {
 	@Column(name = "options_id")
 	private long optionId;
 	@ManyToOne
-	@JoinColumn(name="lcq_id")
+	@JoinColumn(name="id")
 	@JsonBackReference
-	private ListionChoiceQuestion listionChoiceQuestion;
+	private ListenChoiceQuestion listionChoiceQuestion;
    
 	private String optionText;
 	private boolean isCorrect;

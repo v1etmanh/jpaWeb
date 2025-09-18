@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,18 +30,12 @@ import lombok.RequiredArgsConstructor;
 )
 */
 @Entity
-@RequiredArgsConstructor
-@AllArgsConstructor
+@DiscriminatorValue("GAPFILL")
 @Data
-public class GapfillQuestion {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "gfq_id")
-private long gfqId;
-@ManyToOne
-@JoinColumn(name = "module_idd")
-@JsonBackReference
-private Module module;
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class GapfillQuestion  extends ModuleContent{
+
 private String question;
 @OneToMany(mappedBy = "gapfillQuestion",cascade = CascadeType.ALL)
 @JsonManagedReference

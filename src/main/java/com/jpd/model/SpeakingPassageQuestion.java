@@ -2,6 +2,7 @@ package com.jpd.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,17 +20,12 @@ import lombok.RequiredArgsConstructor;
     FOREIGN KEY (module_id) REFERENCES Module(module_id)
 */
 @Entity
+@DiscriminatorValue("SPEAKING_PASSAGE_QUESTION")
+@Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Data
-public class SpeakingPassageQuestion {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-private long spqId;
-	@ManyToOne()
-	@JoinColumn(name = "module_id")
-	@JsonBackReference
-	private Module module;
+public class SpeakingPassageQuestion extends ModuleContent {
+
 	private String passageText;
 	
 }

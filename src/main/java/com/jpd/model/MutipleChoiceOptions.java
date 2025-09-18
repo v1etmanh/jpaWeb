@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class MutipleChoiceOptions {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "options_id")
+@Column(name = "id")
 private long optionId;
 @ManyToOne
 @JoinColumn(name="mcq_id")

@@ -36,7 +36,7 @@ public class ReadingQuestion {
 @Column(name = "rq_id")
 private long rqId;
 @ManyToOne
-@JoinColumn(name = "passage_id")
+@JoinColumn(name = "id")
 @JsonBackReference
 private Passage passage;
 private String question ;

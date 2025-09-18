@@ -34,9 +34,9 @@ return null;
 public void saveProcess(long enrollId, long moduleId) {
 	Enrollment enro=this.enRe.findByEnrollId(enrollId);
 	com.jpd.model.Module module=this.mosRe.findById(moduleId);
-	if(this.fRe.findByEnrollingAndModule(enro,module).isEmpty())
+	if(this.fRe.findByCustomerAndModule(enro.getCustomer(),module).isEmpty())
 	{CustomerFinishedModule x=new CustomerFinishedModule();
-	x.setEnrolling(enro);
+	
 	x.setModule(module);
 	this.fRe.save(x);
 	List<ModuleType>mds=enro.getCourse().getModuleType();
@@ -45,8 +45,7 @@ public void saveProcess(long enrollId, long moduleId) {
      for(ModuleType m:mds) {
     	 length+=m.getModule().size();
      }
-     double oldPro=(enro.getProgress())+1/(double)length;
-     enro.setProgress(oldPro);
+   
      this.enRe.save(enro);
 	}
 }

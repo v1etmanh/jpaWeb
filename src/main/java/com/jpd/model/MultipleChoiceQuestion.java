@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,19 +27,14 @@ import lombok.RequiredArgsConstructor;
     FOREIGN KEY (module_id) REFERENCES Module(module_id)
 )
 */
+
+@Entity
+@DiscriminatorValue("MULTIPLE_CHOICE")
+@Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Entity
-@Data
-public class MultipleChoiceQuestion {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "mcq_id")
-private long mcqId;
-@ManyToOne
-@JoinColumn(name = "module_id")
-@JsonBackReference
-private Module module;
+public class MultipleChoiceQuestion  extends ModuleContent{
+
 private String question;
 @OneToMany(mappedBy = "multipleChoiceQuestion",cascade = CascadeType.ALL)
 @JsonManagedReference
