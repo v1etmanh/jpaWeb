@@ -46,8 +46,9 @@ private double payAmount;
 private Course course;
 
 
+@OneToMany(mappedBy = "enrollment",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+private List< FeedBack >feedBack;
 @OneToOne(mappedBy = "enrollment",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-private FeedBack feedBack;
-
+private CustomerTransaction customerTransaction;
 }
 
