@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -30,4 +31,16 @@ private ModuleContent moduleContent;
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
+	private int limitRequest;
+	@PrePersist()
+	public void setLimitRequestD() {
+		if(moduleContent.getTypeOfContent()==TypeOfContent.SPEAKING_PICTURE||
+				moduleContent.getTypeOfContent()==TypeOfContent.SPEAKING_PASSAGE||
+				moduleContent.getTypeOfContent()==TypeOfContent.WRITING)
+		{
+			this.limitRequest=5;
+		}
+		else limitRequest=Integer.MAX_VALUE;
+		
+	}
 }

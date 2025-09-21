@@ -16,8 +16,9 @@ public abstract class ModuleContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
-   
-
+    @Enumerated(EnumType.STRING)
+    private TypeOfContent typeOfContent;
+     
     @ManyToOne
     @JoinColumn(name = "module_id")
     @JsonBackReference
@@ -25,4 +26,6 @@ public abstract class ModuleContent {
     @OneToMany(mappedBy = "moduleContent",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Customer_Question> customer_Question;
+    
+    
 }

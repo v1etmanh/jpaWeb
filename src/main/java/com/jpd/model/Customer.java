@@ -54,9 +54,7 @@ private List<RememberWord>rememberWords;
 @Column(name = "current_words")
 private int currentWords;
 
-@OneToOne(mappedBy = "customer")
-@JsonManagedReference
-private RequestSpeaking requestSpeaking;
+
 @OneToOne(mappedBy = "customer")
 @JsonManagedReference
 private Creator creator;
@@ -64,6 +62,9 @@ private Creator creator;
 private int numberEnrollment;
 @Column(name = "num")
 private int numberFinishCourse;
+@Column(name = "total_payment")
+private int totalPayment;
+
 @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 private List<Customer_ModuleType>Customer_ModuleTypes;
 @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

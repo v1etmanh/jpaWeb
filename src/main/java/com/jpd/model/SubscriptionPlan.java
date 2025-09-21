@@ -12,6 +12,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +28,9 @@ public class SubscriptionPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "plan_id")
     private Long planId;
-
+    @ManyToOne()
+    @JoinColumn(name="creator_id")
+    private Creator creator;
     private String name;   // Ví dụ: "Basic", "Advanced", "Premium"
     private double price;  // 100000, 330000, 500000
     private int duration;  // số tháng (1, 3, 12)

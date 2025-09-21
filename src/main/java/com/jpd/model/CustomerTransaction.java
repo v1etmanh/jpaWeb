@@ -3,6 +3,7 @@ package com.jpd.model;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,11 +23,12 @@ import lombok.RequiredArgsConstructor;
 public class CustomerTransaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="transaction_id")
 private long transactionId;
 	private String content;
 	private Date createDate;
 	private double total;
-	private double serverGet;
+	private double adminGet;
 	private double creatorGet;
 	@OneToOne
 	@JoinColumn(name = "enroll_id")

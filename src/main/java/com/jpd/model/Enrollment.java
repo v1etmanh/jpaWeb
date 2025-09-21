@@ -38,9 +38,8 @@ private long enrollId;
 private Customer customer;
 private Date createDate;
 
-@
-Column(name = "pay_amount")
-private double payAmount;
+
+;
 @ManyToOne
 @JoinColumn(name = "course_id")  // Tạo khóa ngoại course_id trong bảng Enrollment
 private Course course;

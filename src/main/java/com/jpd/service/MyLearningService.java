@@ -17,11 +17,10 @@ import com.jpd.model.Course;
 import com.jpd.model.Customer;
 import com.jpd.model.CustomerFinishedModule;
 import com.jpd.model.Enrollment;
-import com.jpd.model.RequestSpeaking;
+
 import com.jpd.repository.CourseRepository;
 import com.jpd.repository.CustomerRepository;
 import com.jpd.repository.EnrollingRepository;
-import com.jpd.repository.RequestSpeakingRepository;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,7 +38,7 @@ public class MyLearningService {
 private final EnrollingRepository enrollRe;
 private final CustomerRepository cusRe;
 private final CourseRepository courseRe;
-private final RequestSpeakingRepository rqRe;
+
 public Customer retrieveCustomerByEmail(String email) {
 	return cusRe.findCustomerByEmail(email);
 }
@@ -52,22 +51,7 @@ Enrollment e=new Enrollment();
       
        e.setCreateDate(new Date()); // Hoặc dùng LocalDateTime.now()
 	this.enrollRe.save(e);
-	  RequestSpeaking rq = new RequestSpeaking();
-	    rq.setAvaiableRequest(6);
-	    rq.setCustomer(cus);
-	    
-	    // Sửa cách tạo date
-	    Date today = new Date();
-	    rq.setNowCurrentDate(new java.sql.Date(today.getTime()));
-	    
-	    // Tạo ngày mai (thêm 1 ngày)
-	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(today);
-	    cal.add(Calendar.DAY_OF_MONTH, 1);
-	    rq.setNextDate(new java.sql.Date(cal.getTimeInMillis()));
-	    
-	    // Lưu RequestSpeaking
-	    this.rqRe.save(rq);
+	
 	}
 public List<CourseDTO>retrievedCourseByCustomer(Customer customer){
 	List<Enrollment>enrolls= this.enrollRe.findByCustomer(customer);
